@@ -1,0 +1,96 @@
+<html>
+<head>
+    <title>{{ title }}</title>
+    <meta name = "viewport" content = "width=device-width, initial-scale=1">
+    <link rel ="icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fomantic/semantic.min.css') }}">
+     <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Geostar+Fill|Audiowide|Press+Start+2P|VT323|Orbitron" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='fomantic/swiper.min.css') }}"> -->
+    <script src="{{ url_for('static', filename='fomantic/jquery/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='fomantic/semantic.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='fomantic/charts/chart.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='fomantic/charts/chart.min.js') }}"></script>
+    <!-- <script src="{{ url_for('static', filename='fomantic/swiper.min.js') }}"></script> -->
+</head>
+
+<style>
+
+/*
+font-family: 'Geostar Fill', cursive;
+font-family: 'Audiowide', cursive;
+font-family: 'Cinzel Decorative', cursive;
+font-family: 'Press Start 2P', cursive;
+font-family: 'Orbitron', sans-serif;
+font-family: 'VT323', monospace;
+*/
+
+.oncomputer {
+  display: block !important;
+}
+
+@media screen and (max-width: 768px) {
+  .oncomputer {
+    display: none !important;
+  }
+}
+
+</style>
+
+<body style = "background-color: #e9ebee/*rgb(210, 205, 220)*/">
+<br>
+
+<div class = "ui container">
+
+{% for image in images %}
+  <div class = "ui attached violet message">
+    <h4 class="ui header">
+      PROFILE INFORMATION
+    </h4>
+  </div>
+
+  <div class="ui attached segment">
+
+    <div class="ui stackable two column grid attached segment container" style = "max-width: 800px !important">
+      <div class="column">
+        <img class = "ui medium centered bordered image" src = "/static/images/{{ image }}" style = "max-width: 400px !important; max-height: 200px !important;">
+      </div>
+
+      <div class="ui column" style = "background: rgb(245, 243, 243); padding-left: 10px !important;">
+        <!-- placeholders are placed from here till the cgpa -->
+        <pre style = "overflow: hidden !important; text-overflow: ellipsis !important">NAME   : {{ session['name'] }}</pre>
+        <pre style = "overflow: hidden !important; text-overflow: ellipsis !important">ROLL   : {{ session['roll'] }}</pre>
+        <pre style = "overflow: hidden !important; text-overflow: ellipsis !important">BRANCH : CSE</pre>
+
+        {% if rank == 0 %}
+          <pre>RANK   : <span style = "color: red">NOT AVAILABLE</span></pre>
+        {% else %}
+          <pre>RANK   : <span style = "color: green">#{{ rank }} [ CGPA Based ]</span></pre>
+        {% endif %}
+      </div>
+    </div>
+  </div><br>
+  {% endfor %}
+</div>
+
+</body>
+<script>
+
+$(document).ready(function() {
+
+$('.menu .browse')
+  .popup({
+    inline     : true,
+    hoverable  : true,
+    position   : 'bottom right',
+    delay: {
+      show: 300,
+      hide: 300
+    }
+  })
+;
+
+});
+
+</script>
+
+</html>

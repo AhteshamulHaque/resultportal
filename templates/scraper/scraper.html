@@ -1,0 +1,127 @@
+<html>
+<head>
+    <title>{{ title }}</title>
+    <meta name = "viewport" content = "width=device-width, initial-scale=1">
+    <link rel ="icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fomantic/semantic.min.css') }}">
+    <script src="{{ url_for('static', filename='fomantic/jquery/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='fomantic/semantic.min.js') }}"></script>
+</head>
+
+<style>
+.ui.progress {
+  margin: 0 !important;
+}
+</style>
+
+<body style = "background: rgb(16, 23, 30)">
+
+<div class = "ui center aligned inverted massive fluid segment" style = "border-radius: 0">
+  <span class = "ui text blue">
+    <i class = "download icon"></i>
+    Download Results
+  </span>
+</div>
+
+<div class = "ui container">
+
+<button class = "ui inverted orange fluid button" id = "all" >Download All</button><br>
+
+  <div class = "ui three grid padded stackable cards">
+
+    {% for tuple in download_info %}
+
+      {% set year_and_branch = tuple[0] %}
+      {% set percent = tuple[1] %}
+      {% set completed = tuple[2] %}
+      {% set count = tuple[3] %}
+      {% set all_student = tuple[4] %}
+      {% set year, branch = year_and_branch.split('$') %}
+
+        <div class="ui inverted black fluid card">
+          <div class="content">
+
+            {% if 'TYC' in branch %}
+              <div class="header">{{ year }} {{ branch_name_map[ branch[4:-2] ] }}</div>
+            {% else %}
+              <div class="header">{{ year }} {{ branch_name_map[ branch[3:-2] ] }}</div>
+            {% endif %}
+
+            <div class="meta">
+
+              {% if 'TYC' in branch %}     <!--- branch = TYC_MME_2 --->
+                <p><span>Semester {{ branch[-1] }} ({{ branch.split('_')[1] }})</p>
+                <p><span download-count = "TYC{{ year[2:] }}{{ branch.split('_')[1:] | join('') }}">{{ count }}</span> downloaded</p>
+              {% else %}
+                <p><span>Semester {{ branch[-1] }} ({{ branch.split('_')[0] }})</p>
+                <p><span download-count = "{{ year }}{{ branch.split('_') | join('') }}">{{ count }}</span> downloaded</p>
+              {% endif %}
+            </div>
+
+            <div class="description" style = "max-height: 200px; overflow-y: scroll">
+
+              {% if 'TYC' in branch %}
+                  <div downloaded-info = "TYC{{ year[2:] }}{{ branch.split('_')[1:] | join('') }}" class = "ui bulleted list" style = "color: yellow !important">
+              {% else %}
+                  <div downloaded-info = "{{ year }}{{ branch.split('_') | join('') }}" class = "ui bulleted list" style = "color: yellow !important">
+              {% endif %}
+
+                    <!-- Downloaded names appear here -->
+                    {% if all_student != None %}
+                      {% set downloaded = all_student.split(',') %}
+                    {% else %}
+                      {% set downloaded = [] %}
+                    {% endif %}
+
+                    {% for student in downloaded %}
+                      {% if student %}
+                        {% set roll, name = student.split('@') %}
+                        <div class = "item" roll="{{ roll }}"><span class = "ui text small">{{ name }} ({{ roll }})</span></div>
+                      {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+          </div>
+
+          <div class="extra content centered aligned">
+            <!-- To send branch for download eg: 2015UGCS   branch.splits to ["2015", "UG", "CS", "4"] -->
+            <!-- This is done to show disabled button if all student are downloaded -->
+            {% if completed == 1 %}
+              {% set btn_class = "ui basic blue fluid button disabled" %}
+              {% set show_percent =  100 %}
+            {% else %}
+              {% set btn_class = "ui basic blue fluid button specific" %}
+              {% set show_percent = percent %}
+            {% endif %}
+
+            {% if 'TYC' in branch %}                 <!--- branch = TYC_MME_2 --->
+              <button branch-to-download = "TYC{{ year[2:] }}{{ branch.split('_')[1] }}" semester = "{{ branch.split('_')[-1] }}" class="{{ btn_class }}">Download</button>
+            {% else %}
+              <button branch-to-download = "{{ year }}{{ branch.split('_')[:-1] | join('') }}" semester = "{{ branch.split('_')[-1] }}" class="{{ btn_class }}">Download</button>
+            {% endif %}
+          </div>
+
+          {% if 'TYC' in branch %}
+            <div download-progress = "TYC{{ year[2:] }}{{ branch.split('_')[1:] | join('') }}" data-percent = "{{ show_percent }}" class="ui active bottom green attached progress">
+              <div class="bar"></div>
+            </div>
+          {% else %}
+            <div download-progress = "{{ year }}{{ branch.split('_') | join('') }}" data-percent = "{{ show_percent }}" class="ui active bottom green attached progress">
+              <div class="bar"></div>
+            </div>
+          {% endif %}
+
+        </div>
+    {% endfor %}
+
+  </div><br><br>
+</div>
+
+</body>
+
+<script src = "{{ url_for('static', filename='files/scraper/download_all.js') }}?v={{ random }}"></script>
+<script>
+  $("div[download-progress]").progress();
+</script>
+
+</html>

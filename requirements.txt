@@ -1,0 +1,4 @@
+flask-mysql
+flask
+flask_restful
+bs4

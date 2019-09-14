@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title>{{ title }}</title>
+    <meta name = "viewport" content = "width=device-width, initial-scale=1">
+    <link href="data:image/x-icon;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAU3SURBVGhD7VhdTFtlGGZqjF6YqIneeGOMf7deerVEE92EuZCtEy8WcYyWAgUKg/Z0paW0/BTannaspaWF/gGjLZSCDNgKFBgbXsy4HxOdTGREk5mgiWRzIQQ+v7d+BxFO+SltoaZP8oTT73u/93mec07eAmkppJBCCimk8H+GXC5/Kk+qzwLCNVlOPnDk8mcLZEZBUbX5e0Vz7yIQrmEN9kjZwceZcvULBVVGZbGq5X6tbeCvZv8N1OyfJryBYA32oAZqybGDh7yyxlcFCpO5VGX7WW0fWv43BDuhBmrhDJwlbfYffLHujUKFyVdWZ5/XukdW2MxvRTgDZ6EH9CJtE488qeG9oqrmoEjj/lXfGWI1uxtCD+gFPaE3kYk/uJT+Q0FV89cS+tJvTZ4JVnN7IfSE3qABWkQ2tmBGr6DafFt2wfeH0TfFaiaWBA3QAs2Yjfy10asw/1CNx66pe/3ESgxBE7TBQ9Qj31qYIaw9V9JTrLT8VGsdePLf0RuZxp7riO4cQ43OK6iu9TKqsfSFqTQHwmQ+w16j82q4Fs6w9dpMPPKxF/C045HPjF5LUdaSSSnddmLp2kexUT+S6DrQebodyQyXkNrWh2jXIDJ7xpDNP4Haeq8hZ/90mHANa7AHNfXWvvCZ87p2zI5wL137CKvWejbAyK/ZYuSHR2+VsftcvX1e4wquOiqyka2hhrUZ3FGVJYAorQuprQFk759CvaG7KDDx3Z7oD91B9r7r4Z6UxoWUWGO7pwdewTN4Xxv5PImB4kubHq+/M5ECwftMad3I4guh3nF2Y7Eg9DZ7Q2GtnbyS4B0yQBYcCR3iVxqO4cf3jdTQtdDkmYwYqMFxBV1wD7OaiAdBq8ExvMkHQ/AKnsE7ZIAs4afEgCtueh9vTrQUZy1b6hSbGqjtg8jUFWQVjwdBCzQ3+jB0jSOx1v0QvIJnYj8y7PyMe5pS3ky52v4L3TG21mi/A4EX8IS/dL/iUpp3id3t4eR/csfBP1rHk2hfE1SZnKW1rQ/wmF3Zr0CgDR7AC3giNncOJhD5iKeg6aVCmUmLf4F8mOhAoAna4IHY2T02BmLAk+gzEx0INIl89IgUKFeiS48mUM/YbdSNyba3FUELNIl89NhNoO7RW8jaM450jgFUbfQgcaMDlda0oEL5RcSlaFbCHtRALZyBs9ADeq3vnbBAvpFvsYnLqELdhrgSPavpqIh7iertiHYOYI1biQmkNHlRfmUTu6EYEjRUWCuugXgSOptNPJ48K9JkE/noESnQl5ThFa6Y/p1NOB7MpXQLoEnko0ekQICzYs3bXEqHv6nZTcSGutVcMd3Pk+rfIrJ7w1aBGIAYFqXwXQxhE482m9o1F3G/MeiZI9a+SWT2jpD88DPO/KM/OvKOGsnStuBwvE/nSel3uBLdMRxQiE3V5VJ0G77TXvxzCJsNAv+5Dq+1QQ1+fUvgDDx16EHaxQ6esswP+iWf3795sWR5SsN/1CviTLcKjuz9Hd4P2IuPvzgoOz27MtmC0JQtzMVhA8KhgqQkueAuSP90tl22xIRhGFRlz3k5nOT55zoDV0HGiRl35ZONga4qsufsXxx+jpQlD6w5H708Wpszvz4MvH4B6rObpCT5EBCfmlweN68FetBZveQtyRSQ7eRDpzDzyF1rxZ9MoCHZ6TmP8OTzZDv5gNLSDgVEp+6tXrOihf7G1e7yE21kK3nhFWbmz7ikj0dUZ+YdvPTd//1+0AC/KQSorFm/6KSPLCU/uoTH8+28j18nH1NIIYUUkhVpaX8DZ/g33DrvkhAAAAAASUVORK5CYII=" rel="icon" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fomantic/semantic.min.css') }}">
+     <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
+    <script src="{{ url_for('static', filename='fomantic/jquery/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='fomantic/semantic.min.js') }}"></script>
+</head>
+
+<style>
+
+</style>
+
+<body style = "background-color: rgb(210, 205, 220)">
+
+<div class="ui middle aligned center aligned grid" style = "position: absolute; max-width: 400px; left: 50%; top: 50%; transform: translate(-50%, -50%)">
+  <div class = "ui error text" style = "font-size: 5em; font-family: 'Gugi', cursive; margin-bottom: 20px"><span class = "ui red text">OOPS!</span></div>
+  <div class="ui message">
+    <div class="ui header">
+      404 - PAGE NOT FOUND
+    </div>
+    <ul class="list">
+      <li>The page you are looking for might have been removed.</li>
+      <li>Or had it's name changed or is temporary unavailable.</li>
+    </ul>
+  </div>
+
+    {% if session['logged_in'] %}
+      <a href = " {{ url_for('student.profile') }}" class = "ui button violet">GO TO HOMEPAGE</a>
+    {% elif request.referrer == None %}
+      <a href = " {{ url_for('login') }}" class = "ui button violet">GO TO LOGIN</a>
+    {% endif %}
+</div>
+
+</body>
+
+</html>

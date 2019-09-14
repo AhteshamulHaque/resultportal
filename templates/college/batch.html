@@ -1,0 +1,54 @@
+{% extends 'student/layout.html' %}
+
+{% block content %}
+<div class = "ui container">
+
+	<div class="ui large breadcrumb">
+	  <a class = "section" href="{{ url_for('college.college_home') }}">College</a>
+	  <i class="right angle icon divider"></i>
+	  <a class = "section" href="{{ url_for('college.year',year=year) }}">{{ year }}</a>
+	</div>
+
+	<h3 class = "ui centered orange attached message">
+		Ranking (BATCH {{ year }})
+	</h3>
+
+	<div class = "ui attached segment">
+
+		<div class="ui styled fluid accordion">
+
+		  {% for degree in DEGREE%}
+          <div class="title">
+            <i class="dropdown icon"></i>
+            {{ degree }}
+          </div>
+
+          <div class="content">
+
+            <div class="ui huge celled animated list">
+            	{% for branch, deg in result %}
+
+            		{% if degree == deg %}
+            			{% set cr = branch.split('_')[0] %}
+            			{% set br = branch.split('_')[1] %}
+		              <div class="item">
+		                <a class="ui small text fluid" href = "{{ url_for('college.collegerank', year=year, branch=br, course=cr) }}">{{ BRANCH_NAME[br] }}</a>
+		              </div>
+		            {% endif %}
+	             {% endfor %}
+            </div>
+          </div>
+           {% endfor %}
+
+        </div>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+	$(".ui.accordion").accordion();
+	$("#_collegeresult").addClass("active");
+</script>
+{% endblock %}

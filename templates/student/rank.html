@@ -1,0 +1,165 @@
+{% extends 'student/layout.html' %}
+
+{% block content %}
+
+<div class = "ui container">
+  <div class="ui centered grid" style = "padding: 0 10px;">
+    <div class="sixteen wide column">
+
+
+      <div class="ui top orange attached message">
+        <div class = "header">Filters</div>
+      </div>
+
+      <div class = "ui attached segment">
+        <form id = "form" class="ui form" method = "GET" action = "{{ url_for('student.rank') }}">
+          <div class = "two fields">
+
+            <div class = "field">
+              <label>Choose Semester</label>
+              <select name = "semester" class="ui fluid dropdown" id = "semester">
+
+                {% for sem in session['semesters'] %}
+                  {% if sem == semester %}
+                    <option value = "{{ sem }}" selected>Semester {{ ROMAN_MAP[sem] }}</option>
+                  {% else %}
+                    <option value = "{{ sem }}"> Semester {{ ROMAN_MAP[sem] }}</option>
+                  {% endif %}
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="field">
+              <label>Choose Ranking Method</label>
+              <select name = "method" class="ui fluid dropdown" id = "rank_method">
+                {% if method == 'sgpa' %}
+                    <option value="sgpa" selected>SGPA</option>
+                    <option value="cgpa">CGPA</option>
+                {% else %}
+                    <option value="sgpa">SGPA</option>
+                    <option value="cgpa" selected>CGPA</option>
+                {% endif %}
+              </select>
+            </div>
+
+          </div>
+
+          <button class = "ui blue fluid button" type = "submit">Get Rank</button>
+        </form>
+      </div><br>
+
+
+      <div class = "ui orange attached message">
+        <div class = "header">
+          Semester : {{ ROMAN_MAP[semester] }}
+          <span style = "float: right">Ranked By: {{ method | upper }}</span>
+        </div>
+      </div>
+
+      <div class = "ui clearing attached segment" style = "">
+        <table class="ui celled compact sorted small unstackable table">
+          <thead>
+              <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>{{ method | upper }}</th>
+              </tr>
+          </thead>
+          <tbody id = "result-table">
+            {% for student in pass_ranklist %}
+
+                            <!-- For making the tr class acitve for the current user -->
+              {% if student[0] == session['roll'] %}
+                <tr class = "ui active">
+              {% else %}
+                <tr>
+              {% endif %}
+
+                <td>#{{ student[4] }}</td>
+                <td>
+                  <img class="ui middle spaced aligned tiny image" src = "/static/images/placeholder.png" data-src="/static/images/{{ student[3] }}">
+                  <span>{{ student[1] }} ({{ student[0] }})</span>
+                </td>
+                <td>{{ student[2][0] }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div><br>
+
+      <div class = "ui error center aligned attached message">
+        <div class = "header">
+          Students Who Failed [ {{ failed_list | length }} ]
+        </div>
+      </div>
+
+      {% if (failed_list | length) > 0 %}
+        <div class = "ui attached segment">
+          <table class="ui celled compact sorted small unstackable table">
+            <thead>
+                <tr>
+                <th>Name</th>
+                </tr>
+            </thead>
+            <tbody id = "result-table">
+              {% for student in failed_list %}
+                              <!-- For making the tr class acitve for the current user -->
+                {% if student[0] == session['roll'] %}
+                  <tr class = "ui active">
+                {% else %}
+                  <tr>
+                {% endif %}
+                      <td>
+                        <img class="ui middle spaced aligned tiny image" src = "/static/images/placeholder.png" data-src="/static/images/{{ student[3] }}">
+                        <span>{{ student[1] }} ({{ student[0] }})</span>
+                      </td>
+
+
+                  </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <div class = "ui center aligned clearing attached segment">
+          <div class = "ui header">
+            No Student Failed
+          </div>
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+  $("#semester").dropdown();
+  $("#rank_method").dropdown();
+  $("button[type='submit'").click(function() {
+    $("#form").submit();
+  });
+    $(window).scroll(function() {
+      $('img')
+    .visibility({
+      type       : 'image',
+      transition : 'fade in',
+      duration   : 0
+    });
+  });
+
+  $('img')
+  .visibility({
+    type       : 'image',
+    transition : 'fade in',
+    duration   : 0
+  });
+
+  $("#_ranking").addClass("active");
+  $("#_ranking").removeAttr("href");
+
+</script>
+ <script src = "{{ url_for('static', filename='files/student/rank.min.js') }}?ver={{ random }}"></script>
+{% endblock %}

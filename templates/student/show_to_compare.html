@@ -1,0 +1,124 @@
+{% extends 'student/layout.html' %}
+
+{% block style %}
+<style>
+.description {
+  font-size: 12px !important;
+  max-height: 250px;
+  overflow-y: auto;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class = "ui container">
+
+  <form action = "{{ url_for('student.compare') }}" method = "POST">
+    <div class = "ui orange attached message">
+      <div class = "header">Filters</div>
+    </div>
+
+    <div class = "ui attached segment">
+      <div class="ui form">
+
+        <div class = "ui equal width stackable grid">
+
+          <div class = "column">
+            <div class="field">
+              <label>Select Semester</label>
+              <select name = "semester" id = "semester-option" class = "ui search dropdown">
+                {% for semester in session['semesters'] %}
+                  {% if semester == active_semester %}
+                    <option value = "{{ semester }}" selected>Semester {{ ROMAN_MAP[semester] }}</option>
+                  {% else %}
+                    <option value = "{{ semester }}"> Semester {{ ROMAN_MAP[semester] }}</option>
+                  {% endif %}
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+
+          <div class = "column">
+            <div class = "field">
+                <label>Click to Compare</label>
+                <button id = "compare-btn" type = "submit" class = "ui fluid button primary block">Compare</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div><br>
+
+    <div class = "ui orange attached message">
+      <div class = "header">Select Students [ Semester {{ active_semester }}]</div>
+    </div>
+
+    <div class = "ui attached segment">
+      <table class="ui compact unstackable small selectable celled table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Registration ID</th>
+            <th>Select</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for student in students %}
+
+            {% if session['roll'] != student[1] %}
+              <tr class = "show-image-on-hover {{ student[1] }}">
+                <td>
+                  <img class="ui middle aligned spaced tiny image" src = "static/images/placeholder.png" data-src="/static/images/{{ student[2] }}">
+                  <span>{{ student[0] }}</span>
+                </td>
+                <td>{{ student[1] }}</td>
+                <td class = "collapsing">
+                    <div class="ui student fitted checkbox">
+                      <input type="checkbox" name = "{{ student[1] }}" value = "{{ student[1] }}">
+                    </div>
+                  </td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+        </tbody>
+
+      </table>
+    </div>
+
+  </form>
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+	$(".ui.checkbox").checkbox();
+	$(".ui.dropdown").dropdown();
+
+  $(window).scroll(function() {
+      $('img')
+    .visibility({
+      type       : 'image',
+      transition : 'fade in',
+      duration   : 0
+    });
+  });
+
+  $('img')
+  .visibility({
+    type       : 'image',
+    transition : 'fade in',
+    duration   : 0
+  });
+
+  $("#_compare").addClass("active");
+  $("#_compare").removeAttr("href");
+</script>
+
+<script type = "module" src = "{{ url_for('static', filename='files/student/show_to_compare.min.js') }}"></script>
+
+
+{% endblock %}

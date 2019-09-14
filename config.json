@@ -1,0 +1,73 @@
+{
+    "ToolkitScriptManager1_HiddenField" :"input with same id..value needed",
+      "__EVENTTARGET": "input with same id..value needed",
+      "__EVENTARGUMENT": "input with same id..value needed",
+      "__VIEWSTATE": "input with same id..value needed",
+      "__VIEWSTATEGENERATOR": "input with same id..value needed",
+      "txtRegno": "input with same id..value needed",
+      "btnimgShowResult.x": "random(1,100)",
+      "btnimgShowResult.y": "random(1,100)",
+      "ddlSemester": "0",
+      "hfIdno":"input with same id..value needed",
+      "hdfidno": "input with same id..value needed",
+
+    "ddlSemester" : {
+        "where to find" : "soup.find_all('select',{'id':'ddlSemester'}) and then find_all('option', {'value' : re.complie('[123456789]+') })",
+        "use" : "no of semesters of a student"
+    },
+
+    "lblSRollNo" : {
+        "where to find" : "soup.find_all('span',attrs={'id':'lblRollNo'})",
+        "use" : "Registration no of the student"
+    },
+
+    "lblSName" : {
+        "where to find" : "soup.find_all('span',attrs={'id:'lblSName'})",
+        "use" : "Name of the student"
+    },
+
+    "lblSBranch" : {
+        "where to find" : "soup.find_all('span',attrs={'is':'lblSBranch'})",
+        "use" : "Branch of the student"
+    },
+
+    // second call data
+    "PnlShowResult" : {
+        "where to find" : "soup.find('div',attrs={'id:'PnlShowResult'})",
+        "use" : "Result of the student",
+
+        "1st table tbody": {
+            "2nd tr": {
+                "lblsession": "span id lblsession",
+                "lblDegreeName": "span id lblDegreeName",
+                "lblSchemetype": "span id lblSchemetype"
+            },
+
+            "3rd tr": {
+                "lblStudentName": "span id",
+                "lblBranchName": "span id",
+                "lblSemester": "span id"
+            },
+
+            "4th tr contains original result": {
+                "use": "extract table and then data",
+                "structure": "tr contains td which contains plain text data only",
+                "tip": "clearly first tr contains header"
+            },
+
+            "6th tr": {
+                "lblResult": "pass/fail span id",
+                "lblSPI": "sgpa span id",
+                "lblCPI": "cgpa span id"
+            },
+
+            "7th tr": {
+                "lblPublishDate": "result declaration span id"
+            },
+
+            "result_choice": [],
+
+            "pdf file": "http://14.139.205.172/web_new/commanreport.aspx?pagetitle=gradecarde&path=crptNewGradecard.rpt&param=@P_IDNO={id},@P_SEMESTERNO=3,@P_COLLEGE_CODE=11"
+        }
+    }
+}

@@ -1,0 +1,253 @@
+{% extends 'student/layout.html' %}
+
+{% block content %}
+<div class = "ui container">
+	<h3 class = "ui green message">
+		Semester {{ ROMAN_MAP[ semester ] }}
+		<span style = "float: right">[ Published On {{ publish_date }} ]</span>
+	</h3>
+
+	<div class="ui info message">
+		<div class="header">
+			A little info about the data below
+		</div>
+		<ul class="list">
+			<li class = "oncomputer">Left side shows the line chart data.</li>
+			<li class = "oncomputer"><span class = "ui red text">X-axis</span> show marks.</li>
+			<li class = "oncomputer"><span class = "ui red text">Y-axis</span> show subjects.</li>
+			<li>You and your comparing student are marked with different color for clarity.
+				<ul>
+					<li><pre class = "ui text" style = "padding: 0; margin: 0">Higher marks are marked green <span class="ui mini empty green circular ui label"></span></pre></li>
+					<li><pre class = "ui text" style = "padding: 0; margin: 0">Lower marks are marked red    <span class="ui mini empty red circular ui label"></span></pre></li>
+					<li><pre class = "ui text" style = "padding: 0; margin: 0">Equal marks are marked black  <span class="ui mini empty black circular ui label"></span></pre></li>
+				</ul>
+			</li>
+		</ul>
+
+	</div>
+
+</div>
+
+<div style = "padding: 10px">
+
+	{% for i in range(total_rolls) %}
+        <div class = "ui stackable grid">
+
+        <div class="eight wide column oncomputer">
+            <div class = "ui attached orange message">
+                <div class = "header">
+                    <div class = "ui three column very relaxed center aligned grid">
+                        <div class = "column">
+                            <span class = "ui small text">YOU</span>
+                        </div>
+                        <div class = "column">
+                        	<span class = "ui orange text small">COMPARISION</span>
+                        </div>
+                        <div class = "column">
+                            <span class = "ui small text">{{ others[i*(me|length)][1] }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class = "ui attached segment">
+                <canvas id = 'chart-{{ others[i*(me|length)][0] }}'></canvas>
+            </div>
+        </div>
+
+        <div class="eight wide column">
+            <div class = "ui attached orange message">
+                <div class = "header">
+                    <div class = "ui three column very relaxed center aligned grid">
+                        <div class = "column">
+                            <span class = "ui small text">YOU</span>
+                        </div>
+                        <div class = "column">
+                        	<span class = "ui text small">COMPARISION</span>
+                        </div>
+                        <div class = "column">
+                            <span class = "ui small text">{{ others[i*(me|length)][1] }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "ui attached segment">
+                <div class = "ui segments">
+                    {% for j in range(me|length) %}
+
+                        <!-- for avoiding the colouring of top segment -->
+                        {% if j == 0 %}
+                            <div class = "ui center aligned segment" style = "padding: 5px; font-size: 12px">
+                        {% else %}
+                            <div class = "ui center aligned segment" style = "padding: 5px; font-size: 12px">
+                        {% endif %}
+
+                          <div class = "ui grid">
+                            <div class = "two wide column">
+                            	<!-- Getting color for the field if marks is less, equal or more -->
+                              {% if me[j][4] > custom_key_filter(others, i, j, me) %}
+                              	{% set color = "green" %}
+                              {% elif me[j][4] < custom_key_filter(others, i, j, me) %}
+                              	{% set color = "red" %}
+                              {% else %}
+                              	{% set color = "black" %}
+                              {% endif %}
+
+                          	  <div class="ui left basic {{ color }} horizontal label" style = "float: left">
+                          		{{ me[j][4] }}
+                      	  	  </div>
+
+                            </div>
+                            <div class = "twelve wide column">
+                              <span>{{ me[j][3] }} - {{ me[j][2] }}</span> <!-- can place other[2] subject name-->
+                            </div>
+                            <div class = "two wide column">
+                              <div class="ui basic black horizontal label"  style = "float: right">{{ custom_key_filter( others, i, j, me) }}</div>
+                            </div>
+                          </div>
+                        </div>
+                    {% endfor %}
+
+                    <div class = "ui mini text center aligned segment" style = "padding: 5px; font-size: 12px">
+                      <div class = "ui grid">
+                        <div class = "two wide column">
+                        	<!-- Getting color for the field if marks is less, equal or more -->
+                        	{% if me[0][5] > others[i*(me|length)][5] %}
+	                          {% set color = "green" %}
+	                        {% elif me[0][5] < others[i*(me|length)][5] %}
+	                          {% set color = "red" %}
+	                        {% else %}
+	                          {% set color = "grey" %}
+	                        {% endif %}
+                          <div class="ui left basic horizontal {{ color }} label" style = "float: left">{{ me[0][5] }}</div>
+                        </div>
+                        <div class = "twelve wide column">
+                          <span>CGPA</span>
+                        </div>
+                        <div class = "two wide column">
+                          <div class="ui basic black horizontal label"  style = "float: right">{{ others[i*(me|length)][5] }}</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class = "ui mini text center aligned segment" style = "padding: 5px; font-size: 12px">
+                      <div class = "ui grid">
+                        <div class = "two wide column">
+                        	<!-- Getting color for the field if marks is less, equal or more -->
+                          {% if me[0][6] > others[i*(me|length)][6] %}
+	                        {% set color = "green" %}
+	                      {% elif me[0][6] < others[i*(me|length)][6] %}
+	                        {% set color = "red" %}
+	                      {% else %}
+	                        {% set color = "black" %}
+	                      {% endif %}
+                          <div class="ui left horizontal basic {{ color }} label" style = "float: left">{{ me[0][6] }}</div>
+                        </div>
+                        <div class = "twelve wide column">
+                          <span>SGPA</span>
+                        </div>
+                        <div class = "two wide column">
+                          <div class="ui basic black horizontal label"  style = "float: right">{{ others[i*(me|length)][6] }}</div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  {% endfor %}
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+
+$("#_compare").addClass("active");
+
+{% for i in range(total_rolls) %}
+	{% set labels = [] %}
+	{% set my_data = [] %}
+	{% set other_data = [] %}
+
+	{% set red_me = range(0, 256) | random %}
+	{% set blue_me = range(0, 256) | random %}
+	{% set green_me = range(0, 256) | random %}
+
+	{% set red_other = range(0, 256) | random %}
+	{% set blue_other = range(0, 256) | random %}
+	{% set green_other = range(0, 256) | random %}
+
+	{% for j in range(me|length) %}
+			// {{ labels.append(me[j][3])  }}
+			// {{ my_data.append(me[j][4])  }}
+			// {{ other_data.append( custom_key_filter(others, i, j, me) )  }}
+	{% endfor %}
+
+	var labels = {{ labels | tojson }};
+	var my_data = {{ my_data | tojson }};
+	var other_data = {{ other_data | tojson }};
+
+		new Chart('chart-{{ others[i*(me|length)][0] }}', {
+		  type: 'line',
+		  data: {
+		    labels: {{ labels | tojson }},
+
+		    datasets: [{
+		        label: "You",
+		        data: {{ my_data | tojson }},
+		        lineTension: 0,
+		        backgroundColor: "transparent",
+		        borderColor: "rgb({{ red_me }}, {{ blue_me }}, {{ green_me }})",  // randomize it
+		        pointBackgroundColor: "rgb({{ red_me }}, {{ blue_me }}, {{ green_me }})",
+		        pointRadius: 4,
+		        pointHoverRadius: 8
+		    },
+		    {
+		      label: {{ others[i*(me|length)][1] | tojson }},
+		      data: {{ other_data | tojson }},
+		      lineTension: 0,
+		      backgroundColor: "transparent",
+		      borderColor: "rgb({{ red_other }}, {{ blue_other }}, {{ green_other }})",
+		      pointBackgroundColor: "rgb({{ red_other }}, {{ blue_other }}, {{ green_other }})",
+		      pointRadius: 4,
+		      pointHoverRadius: 8
+		    }]
+		  },
+		  options: {
+		    title: {
+		      display: true,
+		      text: 'Graph of Comparision'
+		    },
+
+		    scales: {
+		      yAxes:[{
+		        ticks: {
+		          min: 0,
+		          max: 100,
+		          stepSize: 20
+		        }
+		      }]
+		    },
+
+		    tooltips: {
+		    	position: 'average',
+		    	mode: 'index',
+		    	intersect: false,
+		    	callbacks: {
+		    		title: function(tooltipItem, data) {
+		    			var subject_map = {{ subject_map | tojson }};
+		    			return subject_map[tooltipItem[0].xLabel];
+		    		}
+		    	}
+		    }
+
+		  }
+		});
+
+
+{% endfor %}
+
+</script>
+{% endblock %}

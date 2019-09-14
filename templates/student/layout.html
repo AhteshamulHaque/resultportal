@@ -1,0 +1,155 @@
+<html>
+<head>
+  <title>{{ title }}</title>
+
+  <meta name = "viewport" content = "width=device-width, initial-scale=1">
+  <meta name="description" content="See your and your's class end semester result here">
+  <meta property="og:title" content="NIT JSR | Result Portal" />
+  <meta property="og:url" content="https://nilekrator.pythonanywhere.com/" />
+  <meta property="og:description" content="See your and your's class end semester result here">
+  <meta property="og:image" content="https://cdn.pixabay.com/photo/2016/09/16/19/16/hat-1674894_960_720.png">
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:locale:alternate" content="fr_FR" />
+  <meta property="og:locale:alternate" content="es_ES" />
+
+  <link href="data:image/x-icon;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAU3SURBVGhD7VhdTFtlGGZqjF6YqIneeGOMf7deerVEE92EuZCtEy8WcYyWAgUKg/Z0paW0/BTannaspaWF/gGjLZSCDNgKFBgbXsy4HxOdTGREk5mgiWRzIQQ+v7d+BxFO+SltoaZP8oTT73u/93mec07eAmkppJBCCimk8H+GXC5/Kk+qzwLCNVlOPnDk8mcLZEZBUbX5e0Vz7yIQrmEN9kjZwceZcvULBVVGZbGq5X6tbeCvZv8N1OyfJryBYA32oAZqybGDh7yyxlcFCpO5VGX7WW0fWv43BDuhBmrhDJwlbfYffLHujUKFyVdWZ5/XukdW2MxvRTgDZ6EH9CJtE488qeG9oqrmoEjj/lXfGWI1uxtCD+gFPaE3kYk/uJT+Q0FV89cS+tJvTZ4JVnN7IfSE3qABWkQ2tmBGr6DafFt2wfeH0TfFaiaWBA3QAs2Yjfy10asw/1CNx66pe/3ESgxBE7TBQ9Qj31qYIaw9V9JTrLT8VGsdePLf0RuZxp7riO4cQ43OK6iu9TKqsfSFqTQHwmQ+w16j82q4Fs6w9dpMPPKxF/C045HPjF5LUdaSSSnddmLp2kexUT+S6DrQebodyQyXkNrWh2jXIDJ7xpDNP4Haeq8hZ/90mHANa7AHNfXWvvCZ87p2zI5wL137CKvWejbAyK/ZYuSHR2+VsftcvX1e4wquOiqyka2hhrUZ3FGVJYAorQuprQFk759CvaG7KDDx3Z7oD91B9r7r4Z6UxoWUWGO7pwdewTN4Xxv5PImB4kubHq+/M5ECwftMad3I4guh3nF2Y7Eg9DZ7Q2GtnbyS4B0yQBYcCR3iVxqO4cf3jdTQtdDkmYwYqMFxBV1wD7OaiAdBq8ExvMkHQ/AKnsE7ZIAs4afEgCtueh9vTrQUZy1b6hSbGqjtg8jUFWQVjwdBCzQ3+jB0jSOx1v0QvIJnYj8y7PyMe5pS3ky52v4L3TG21mi/A4EX8IS/dL/iUpp3id3t4eR/csfBP1rHk2hfE1SZnKW1rQ/wmF3Zr0CgDR7AC3giNncOJhD5iKeg6aVCmUmLf4F8mOhAoAna4IHY2T02BmLAk+gzEx0INIl89IgUKFeiS48mUM/YbdSNyba3FUELNIl89NhNoO7RW8jaM450jgFUbfQgcaMDlda0oEL5RcSlaFbCHtRALZyBs9ADeq3vnbBAvpFvsYnLqELdhrgSPavpqIh7iertiHYOYI1biQmkNHlRfmUTu6EYEjRUWCuugXgSOptNPJ48K9JkE/noESnQl5ThFa6Y/p1NOB7MpXQLoEnko0ekQICzYs3bXEqHv6nZTcSGutVcMd3Pk+rfIrJ7w1aBGIAYFqXwXQxhE482m9o1F3G/MeiZI9a+SWT2jpD88DPO/KM/OvKOGsnStuBwvE/nSel3uBLdMRxQiE3V5VJ0G77TXvxzCJsNAv+5Dq+1QQ1+fUvgDDx16EHaxQ6esswP+iWf3795sWR5SsN/1CviTLcKjuz9Hd4P2IuPvzgoOz27MtmC0JQtzMVhA8KhgqQkueAuSP90tl22xIRhGFRlz3k5nOT55zoDV0HGiRl35ZONga4qsufsXxx+jpQlD6w5H708Wpszvz4MvH4B6rObpCT5EBCfmlweN68FetBZveQtyRSQ7eRDpzDzyF1rxZ9MoCHZ6TmP8OTzZDv5gNLSDgVEp+6tXrOihf7G1e7yE21kK3nhFWbmz7ikj0dUZ+YdvPTd//1+0AC/KQSorFm/6KSPLCU/uoTH8+28j18nH1NIIYUUkhVpaX8DZ/g33DrvkhAAAAAASUVORK5CYII=" rel="icon" type="image/x-icon">
+  <link rel="stylesheet" href="{{ url_for('static', filename='fomantic/semantic.min.css') }}">
+  <link href="https://fonts.googleapis.com/css?family=Audiowide|Cinzel+Decorative|Geostar+Fill|Nosifer|Press+Start+2P" rel="stylesheet">
+  <script src="{{ url_for('static', filename='fomantic/jquery/jquery.js') }}"></script>
+  <script src="{{ url_for('static', filename='fomantic/semantic.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='fomantic/charts/chart.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='fomantic/charts/chart.min.js') }}"></script>
+</head>
+
+<style>
+
+.oncomputer {
+  display: block !important;
+}
+
+.onmobile {
+  display: none !important;
+}
+@media screen and (max-width: 768px) {
+  .oncomputer {
+    display: none !important;
+  }
+
+  .onmobile {
+    display: block !important;
+  }
+}
+
+body {
+  background-color: /*rgb(210, 205, 220)*/rgb(248, 249, 249);
+}
+
+</style>
+
+{% block style %}{% endblock %}
+
+<body>
+
+    <div class="ui sidebar inverted blue vertical menu">
+    <div style = "padding-left: 4em">
+      <i class = "graduation massive inverted cap icon"></i>
+    </div>
+    <a id = "_home" href = "{{ url_for('student.profile') }}" class="item">
+      <i class ="home icon"></i>Home
+    </a>
+    <a id = "_ranking" href = "{{ url_for('student.rank') }}" class="item">
+      <i class ="chart line icon"></i>Ranking
+    </a>
+    <a id = "_compare" href = "{{ url_for('student.compare') }}" class="item">
+      <i class ="edit icon"></i>Compare Results
+    </a>
+    <a id = "_stats" href = "{{ url_for('student.stats') }}" class="item">
+      <i class ="chart area icon"></i>My Stats
+    </a>
+    <a id = "_collegeresult" href = "{{ url_for('college.college_home') }}" class="item">
+      <i class ="building icon"></i>College Ranking
+    </a>
+    <a href = "{{ url_for('logout') }}" class = "item">
+      <i class = "sign out icon"></i>Logout
+    </a>
+
+    </div>
+    <div class="pusher">
+    <!-- Site content !-->
+    <div id = "top-nav" class="ui top large inverted blue fixed menu" style = "z-index: 50000 !important">
+      <a class="header item" id = "sidebar-toggle"><i style = "color: white; font-size: 24px;" class = "bars icon"></i></a>
+      <div class = "item" style = "color: white; border-right: none; padding: .5em .4em; font-weight: bold; font-family: 'Audiowide', cursive; font-size: 26px">
+        RESULT PORTAL
+      </div>
+      <div class = "right icon menu">
+        <a id = "correctness" class="item"><i style = "color: white" class="info icon"></i></a>
+        <div class="ui fluid popup bottom left transition hidden" style="min-width: 400px; max-width: 786px">
+          <h5 class = "header" style = "margin-bottom: 0; padding-bottom: 0">Disclaimer</h5>
+          The results published on this website are for immediate information to the student. If in doubt refer to the <a target= "_blank" href = 'http://14.139.205.172/web_new/Default.aspx'> Institute's Result Portal.</a>
+        </div>
+      </div>
+    </div>
+
+    <div id = "main-content" style = "z-index: 5000 !important; margin-top: 70px">
+      {% block content %}{% endblock %}
+    </div>
+
+    <br><br>
+    <!-- <div class="ui centered center aligned inverted fluid purple bottom fixed menu" style = "color: #fff; padding: 10px; font-weight: bold; z-index: 5000 !important">
+      DEVELOPED BY 2017UGCS036
+    </div> -->
+    </div>
+
+</body>
+
+<script>
+$(document).ready(function() {
+
+  var blur = true;
+  $(".ui.sidebar").sidebar({
+
+      onChange: () => {
+
+        if(blur == true)
+            $("#main-content").css("filter","blur(12px)");
+        else
+            $("#main-content").css("filter", "blur(0)");
+
+        blur = ((blur==true) ? false : true);
+      },
+
+
+  }).sidebar("hide").sidebar("attach events", "#sidebar-toggle", "toggle");
+
+    if( localStorage.getItem("seen")  == undefined)
+    {
+        $("#sidebar-toggle").click();
+        localStorage.setItem("seen", "yes");
+    }
+
+  $('#correctness')
+  .popup({
+    inline     : true,
+    hoverable  : true,
+    position   : 'bottom right',
+    delay: {
+      show: 300,
+      hide: 300
+    }
+  });
+
+  $("#logout").click(function() {
+    sessionStorage.clear();
+    location.href = '/logout';
+  });
+
+  $(".pusher").css("background", "rgb(248, 249, 249)");
+  $("#main-content").css("background", "rgb(248, 249, 249)");
+
+});
+</script>
+
+{% block script %} {% endblock %}
+
+</html>

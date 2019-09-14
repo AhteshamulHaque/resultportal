@@ -1,0 +1,153 @@
+{% extends 'student/layout.html' %}
+
+{% block style %} {% endblock %}
+
+{% block content %}
+
+<div class = "ui container">
+
+   <!--if fail_flag-->
+   <!-- <div class="ui warning message">-->
+   <!--   <i class = "exclamation triangle"></i>-->
+   <!--   <div class="header">-->
+   <!--     You weren't able to clear some previous semesters!-->
+   <!--   </div>-->
+   <!--   Click the <button id = "refresh_result" class = "ui circluar mini yellow button">Refresh</button> button if you have given supplement or backlog.-->
+   <!-- </div>-->
+   <!--endif -->
+
+
+  <div class = "ui attached orange message">
+    <h4 class="ui header">
+      PROFILE INFORMATION
+    </h4>
+  </div>
+
+  <div class="ui attached segment">
+
+    <div class="ui stackable two column grid attached segment container" style = "max-width: 800px !important">
+      <div class="column">
+        <img class = "ui medium centered bordered image" src = "/static/images/placeholder.png" data-src = "/static/images/{{session['image_id']}}" style = "max-width: 270px !important; max-height: 200px !important;">
+      </div>
+
+      <div class="ui column" style = "background: rgb(245, 243, 243); padding-left: 10px !important;">
+        <!-- placeholders are placed from here till the cgpa -->
+        <pre style = "overflow: hidden !important; text-overflow: ellipsis !important">NAME   : {{ session['name'] }}</pre>
+        <pre style = "overflow: hidden !important; text-overflow: ellipsis !important">ROLL   : {{ session['roll'] }}</pre>
+        <pre style = "overflow: hidden !important; text-overflow: ellipsis !important">BRANCH : {{ BRANCH_NAME[session['branch']] }}</pre>
+
+        {% if rank == 0 %}
+          <pre>RANK   : <span style = "color: red">NOT AVAILABLE</span></pre>
+        {% else %}
+          <pre>RANK   : <span style = "color: green">#{{ rank }} [ CGPA Based ]</span></pre>
+        {% endif %}
+      </div>
+    </div>
+  </div><br>
+
+  {% for semester in result.keys() %}
+
+      <div class="ui attached orange message">
+        <h4 class = "ui header">
+          Semester {{ ROMAN_MAP[semester] }}
+          <span style = "float: right">[ {{ result[semester]['publish_date']}}]</span>
+        </h4>
+      </div>
+      <div class="ui attached segment" style = "overflow-x: auto">
+
+        <table class = "ui celled compact sorted small unstackable table">
+          <tr class = "center aligned">
+            <th style = "padding: 10px 5px" class = "five wide">SGPA</th>
+            <th style = "padding: 10px 5px" class = "five wide">CGPA</th>
+            <th style = "padding: 10px 5px" class = "five wide">RESULT STATUS</th>
+          <tr>
+          <tr class = "center aligned">
+            <td>{{ result[semester]['sgpa'] }}</td>
+            <td>{{ result[semester]['cgpa'] }}</td>
+            <td>
+              {% if result[semester]['result_status'] == "PASS" %}
+                <span roll = "{{ session['roll'] }}" semester= "{{ semester }}" class = "ui green label result_status">{{ result[semester]['result_status'] }}</span>
+              {% else %}
+                <span roll = "{{ session['roll'] }}" semester = "{{ semester }}" class = "ui red label result_status">{{ result[semester]['result_status'] }}</span>
+              {% endif %}
+            </td>
+          </tr>
+        </table>
+
+        <table class="ui celled compact sorted small unstackable table">
+          <tr>
+            <th style = "padding: 10px 5px">Subject Code</th>
+            <th style = "padding: 10px 5px">Subject</th>
+            <th style = "padding: 10px 5px">Test I</th>
+            <th style = "padding: 10px 5px">Test II</th>
+            <th style = "padding: 10px 5px">Assignment</th>
+            <th style = "padding: 10px 5px">Quiz Avg</th>
+            <th style = "padding: 10px 5px">End Sem</th>
+            <th style = "padding: 10px 5px">Total</th>
+            <th style = "padding: 10px 5px">Grade</th>
+          </tr>
+
+          <tbody style = "font-size: 12px">
+            {% for code in result[semester] %}
+              {% if isinstance(result[semester][code], dict) %}
+                <tr>
+                  <td>{{ code }}</td>
+                  <td>{{ result[semester][code]['subject_name'] }}</td>
+                  <td>{{ result[semester][code]['test_1'] }}</td>
+                  <td>{{ result[semester][code]['test_2'] }}</td>
+                  <td>{{ result[semester][code]['assignment'] }}</td>
+                  <td>{{ result[semester][code]['quiz_avg'] }}</td>
+                  <td>{{ result[semester][code]['end_sem'] }}</td>
+                  <td>{{ result[semester][code]['total'] }}</td>
+                  <td>{{ result[semester][code]['grade'] }}</td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table><br>
+      </div><br>
+  {% endfor %}
+
+</div>
+
+<div id = "load" class="ui tiny modal" style = "z-index: 30000">
+  <div class="header" style = "background: rgb( 52, 117, 210); color: white">
+    Hold On!
+  </div>
+  <div class="content">
+    <div class = "ui header">
+        Checking If you Have Passed Previous Semesters ?
+    </div>
+    <div id = "sems_list" class = "ui list">
+
+    </div>
+
+    <div id = "update-sem-message">
+
+    </div>
+  </div>
+
+  <div class = "actions">
+      <div id = "load-approve" class = "ui approve blue button">Close</div>
+  </div>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+<script>
+  $(".menu .item").tab();
+  $('img').visibility({
+    type       : 'image',
+    transition : 'fade in',
+    duration   : 0,
+  });
+
+  $("#_home").addClass("active");
+  $("#_home").removeAttr("href");
+
+  $("#refresh_result").popup();
+</script>
+<script src = "{{ url_for('static', filename='files/student/profile.min.js') }}?ver={{ random }}"></script>
+{% endblock %}

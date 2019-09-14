@@ -1,0 +1,137 @@
+{% extends 'student/layout.html' %}
+
+{% block content %}
+
+<div class = "ui container">
+	<div class = "ui orange attached message">
+		<div class = "header">
+			Graph of CGPA and SGPA
+		</div>
+	</div>
+	<div class = "ui attached segment">
+		<canvas id = "Chart"></canvas>
+	</div><br>
+
+
+	<div class="ui orange mini attached message">
+		<div class="ui header">
+			PREPARE FOR FUTURE EXAMS
+		</div>
+	</div>
+	<div class = "ui attached segment">
+
+			<!-- need no_of_semesters and last_semester attributes for the javascript to initialise -->
+		<div class = "ui three column stackable grid" id = "predictor_container" last-semester="{{ session['semesters'][-1] }}">
+			<div class = "ui center aligned sixteen wide column">
+				<div class="ui labeled button">
+			      <div class="ui basic green button" id = "add_predictor">
+			        <i class="add icon"></i> <span class = "ui small text">Click Me</span>
+			      </div>
+			      <p class="ui basic green left pointing label">
+			        Add predictors equal to the number of semesters left. For example, if you have 8 semesters and of which 3 are over. You click the plus sign 5 times.
+			      </p>
+			    </div>
+			</div>
+
+			<!-- Predictors will be added here -->
+
+		</div>
+	</div>
+
+	<div class = "ui bottom attached header center aligned">
+	  <div class="ui statistic">
+	    <div id = "predicted_cgpa">
+	      {{ session['cgpa'] }}
+	    </div>
+	    <div class="label">
+	      CGPA
+	      <p>(At the end of <span id = "last-semester">{{ ROMAN_MAP[session['semesters'][-1]] }}</span> semester)</p>
+	    </div>
+	  </div>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script src = "{{ url_for('static', filename='files/student/statistics.min.js') }}"></script>
+
+<script>
+
+	{% set red_cgpa = range(0, 256) | random %}
+	{% set green_cgpa = range(0, 256) | random %}
+	{% set blue_cgpa = range(0, 256) | random %}
+
+	{% set red_sgpa = range(0, 256) | random %}
+	{% set green_sgpa = range(0, 256) | random %}
+	{% set blue_sgpa = range(0, 256) | random %}
+
+	{% set labels = [] %}
+	{% set cgp_data = [] %}
+	{% set sgp_data = [] %}
+
+	{% for key in cgp_sgp.keys() | sort %}
+
+	   {% if cgp_sgp[key] != None %}
+	    // {{ cgp_data.append(cgp_sgp[key][0]) }}
+	    // {{ sgp_data.append(cgp_sgp[key][1]) }}
+	    // {{ labels.append("Semester "+key) }}
+	   {% endif %}
+
+	{% endfor %}
+
+	new Chart('Chart', {
+		  type: 'line',
+		  data: {
+		    labels: {{ labels | tojson }},
+
+		    datasets: [{
+		        label: "CGPA",
+		        data: {{ cgp_data | tojson }},
+		        lineTension: 0,
+		        backgroundColor: "transparent",
+		        borderColor: "rgb({{ red_cgpa }}, {{ blue_cgpa }}, {{ green_cgpa }})",
+		        pointBackgroundColor: "rgb({{ red_cgpa }}, {{ blue_cgpa }}, {{ green_cgpa }})",
+		        pointRadius: 4,
+		        pointHoverRadius: 8
+		    },
+		    {
+		        label: "SGPA",
+		        data: {{ sgp_data }},
+		        lineTension: 0,
+		        backgroundColor: "transparent",
+		        borderColor: "rgb({{ red_sgpa }}, {{ blue_sgpa }}, {{ green_sgpa }})",  // randomize it
+		        pointBackgroundColor: "rgb({{ red_sgpa }}, {{ blue_sgpa}}, {{ green_sgpa }})",
+			    pointRadius: 4,
+			    pointHoverRadius: 8
+		    }]
+		  },
+		  options: {
+		    title: {
+		      display: true,
+		      text: ''
+		    },
+
+		    scales: {
+		      yAxes:[{
+		        ticks: {
+		          min: 0,
+		          max: 10,
+		          stepSize: 1
+		        }
+		      }]
+		    },
+
+		    tooltips: {
+		    	position: 'average',
+		    	mode: 'index',
+		    	intersect: false
+		    }
+		  }
+		});
+
+	$("#_stats").addClass('active');
+	$("#_stats").removeAttr('href');
+
+</script>
+{% endblock %}

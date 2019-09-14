@@ -1,0 +1,36 @@
+{% extends 'student/layout.html' %}
+
+{% block content %}
+
+<div class = "ui container">
+
+	<div class="ui large breadcrumb">
+	  <a class = "section" href="{{ url_for('college.college_home') }}">College</a>
+	</div>
+
+	<h3 class = "ui centered orange attached message">
+	Ranking
+	</h3>
+
+	<div class = "ui attached segment">
+		<div class="ui massive celled animated list">
+		{% for YEAR in batch %}
+		  <div class="item">
+		    <div class="content">
+		      <a class="ui small text" href = '{{ url_for("college.year",year=YEAR) }}'>BATCH {{YEAR}}</a>
+		    </div>
+		  </div>
+		 {% endfor %}
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+	$("#_collegeresult").addClass("active");
+	$("#_collegeresult").removeAttr("href");
+</script>
+{% endblock %}
