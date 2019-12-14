@@ -2,6 +2,7 @@
 from flask import ( jsonify, render_template, session, Flask,
                 redirect, url_for, request, make_response, abort )
 from app import create_app
+from flask_restful import reqparse
 from extensions import mysql, login_required
 import time, copy
 from pprint import pprint
@@ -25,8 +26,13 @@ sentry_sdk.init(
 @app.route("/", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
+        parser = reqparse.RequestParser()
+        parser.add_argument('roll', location=['json', 'form'], required=True)
+
         session.clear()
-        ROLL = request.form.get('roll').upper().strip()
+
+        args = parser.parse_args()
+        ROLL = args['roll'].upper()
 
         if not ROLL:
             return make_response(jsonify(message="Student does not exists"), 404)

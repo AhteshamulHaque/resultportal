@@ -32,6 +32,10 @@ $(document).ready(function() {
         type: 'POST',
         data: { roll: roll },
 
+        xhrFields: {
+            withCredentials: true
+        },
+
         success: function(student) {
             //insert into recent files
             console.log("Success: ", student);
