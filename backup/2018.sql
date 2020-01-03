@@ -1594,7 +1594,7 @@ CREATE TABLE `RESULT_PG_CACA_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_pg_caca_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_CACA_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_PG_CACA_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_CACA_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1690,7 +1690,7 @@ CREATE TABLE `RESULT_PG_CAIS_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_pg_cais_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_CAIS_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_PG_CAIS_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_CAIS_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1786,7 +1786,7 @@ CREATE TABLE `RESULT_PG_CEGE_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_pg_cege_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_CEGE_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_PG_CEGE_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_CEGE_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1882,7 +1882,7 @@ CREATE TABLE `RESULT_PG_CESE_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_pg_cese_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_CESE_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_PG_CESE_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_CESE_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1978,7 +1978,7 @@ CREATE TABLE `RESULT_PG_CEWR_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_pg_cewr_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_CEWR_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_PG_CEWR_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_CEWR_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2074,7 +2074,7 @@ CREATE TABLE `RESULT_PG_CHCH_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_pg_chch_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_CHCH_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_PG_CHCH_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_CHCH_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2234,7 +2234,7 @@ CREATE TABLE `RESULT_PG_CSCS_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_pg_cscs_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_CSCS_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_PG_CSCS_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_CSCS_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2458,7 +2458,7 @@ CREATE TABLE `RESULT_PG_EEPE_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_pg_eepe_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_EEPE_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_PG_EEPE_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_EEPE_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2554,7 +2554,7 @@ CREATE TABLE `RESULT_PG_EEPS_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_pg_eeps_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_EEPS_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_PG_EEPS_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_EEPS_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2650,7 +2650,7 @@ CREATE TABLE `RESULT_PG_MECI_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_pg_meci_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_MECI_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_PG_MECI_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_MECI_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2746,7 +2746,7 @@ CREATE TABLE `RESULT_PG_MEES_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_pg_mees_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_MEES_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_PG_MEES_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_MEES_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2842,7 +2842,7 @@ CREATE TABLE `RESULT_PG_METE_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_pg_mete_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_METE_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_PG_METE_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_METE_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2938,7 +2938,7 @@ CREATE TABLE `RESULT_PG_MFMS_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_pg_mfms_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_MFMS_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_PG_MFMS_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_MFMS_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -3034,7 +3034,7 @@ CREATE TABLE `RESULT_PG_MHMH_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_pg_mhmh_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_MHMH_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_PG_MHMH_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_MHMH_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -3130,7 +3130,7 @@ CREATE TABLE `RESULT_PG_MMFT_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_pg_mmft_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_MMFT_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_PG_MMFT_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_MMFT_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -3226,7 +3226,7 @@ CREATE TABLE `RESULT_PG_MMMT_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_pg_mmmt_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_MMMT_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_PG_MMMT_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_MMMT_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -3322,7 +3322,7 @@ CREATE TABLE `RESULT_PG_PHPH_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_pg_phph_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_PHPH_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_PG_PHPH_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `PG_PHPH_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -3450,7 +3450,7 @@ CREATE TABLE `RESULT_UG_CE_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_ug_ce_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `UG_CE_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_UG_CE_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `UG_CE_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -3546,7 +3546,7 @@ CREATE TABLE `RESULT_UG_CS_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_ug_cs_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `UG_CS_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_UG_CS_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `UG_CS_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -3642,7 +3642,7 @@ CREATE TABLE `RESULT_UG_EC_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_ug_ec_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `UG_EC_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_UG_EC_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `UG_EC_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -3738,7 +3738,7 @@ CREATE TABLE `RESULT_UG_EE_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_ug_ee_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `UG_EE_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_UG_EE_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `UG_EE_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -3834,7 +3834,7 @@ CREATE TABLE `RESULT_UG_ME_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_ug_me_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `UG_ME_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_UG_ME_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `UG_ME_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -3930,7 +3930,7 @@ CREATE TABLE `RESULT_UG_MM_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_ug_mm_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `UG_MM_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_UG_MM_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `UG_MM_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -4026,7 +4026,7 @@ CREATE TABLE `RESULT_UG_PI_3` (
   `assignment` float(5,2) DEFAULT NULL,
   `quiz_avg` float(5,2) DEFAULT NULL,
   KEY `roll` (`roll`),
-  CONSTRAINT `result_ug_pi_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `UG_PI_3` (`roll`) ON DELETE CASCADE
+  CONSTRAINT `RESULT_UG_PI_3_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `UG_PI_3` (`roll`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
