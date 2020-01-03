@@ -113,7 +113,7 @@ class StudentRank:
 
 if __name__ == '__main__':
 
-	DBs = ["2015", "2016", "2017", "2018"]
+	DBs = ["2015", "2016", "2017", "2018", "2019"]
 	conn = mysql.connect(os.environ['MYSQL_DATABASE_HOST'], os.environ['MYSQL_DATABASE_USER'], os.environ['MYSQL_DATABASE_PASSWORD'])
 	cursor = conn.cursor()
 
