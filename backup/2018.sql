@@ -3963,6 +3963,29 @@ INSERT INTO `UG_PI_3` VALUES ('2018UGPI001',9.03,9.42,'PASS'),('2018UGPI002',0.0
 /*!40000 ALTER TABLE `UG_PI_3` ENABLE KEYS */;
 UNLOCK TABLES;
 
+
+--
+-- TABLE STRUCTURE FOR TABLE `RESULT_UG_CE_1`
+--
+
+DROP TABLE IF EXISTS `RESULT_UG_CE_1`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `RESULT_UG_CE_1` (
+  `roll` varchar(20) DEFAULT NULL,
+  `subject_code` varchar(10) DEFAULT NULL,
+  `end_sem` float(5,2) DEFAULT NULL,
+  `test_1` float(5,2) DEFAULT NULL,
+  `test_2` float(5,2) DEFAULT NULL,
+  `grade` varchar(7) DEFAULT NULL,
+  `total` float(5,2) DEFAULT NULL,
+  `assignment` float(5,2) DEFAULT NULL,
+  `quiz_avg` float(5,2) DEFAULT NULL,
+  KEY `roll` (`roll`),
+  CONSTRAINT `RESULT_UG_CE_1_ibfk_1` FOREIGN KEY (`roll`) REFERENCES `UG_CE_1` (`roll`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 --
 -- DUMPING DATA FOR TABLE `RESULT_UG_CE_1`
 --
